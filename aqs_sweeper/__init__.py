@@ -396,7 +396,7 @@ def get_config_dict():
     parser.add_argument('-n', '--number', help="Approx records per file. Default: 10000")
     parser.add_argument('-v', '--visibility', help="Visibility timeout after get the message. Default: 600s")
     parser.add_argument('-w', '--worker', help="Number of worker for collecting and deleting. Default: 16")
-    parser.add_argument('-o', '--once', action="store_true", help="Only runs one iteration. Default: false")
+    parser.add_argument('--once', action="store_true", help="Only runs one iteration. Default: false")
     parser.add_argument('--dryrun', action="store_true", help="Dry run mode. Don't delete a single a record or file (but upload)!")
     args = parser.parse_args()
 

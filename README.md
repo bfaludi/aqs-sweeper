@@ -29,7 +29,7 @@ Using the original script is easy. You'll get an `aqs-sweep` script.
 ```bash
 aqs-sweep [-h] [-c CONFIG] [-a ACCOUNT] [-k KEY] [-q QUEUE]
           [-p BLOBPATH] [-d TMPDIR] [-n NUMBER] [-v VISIBILITY]
-          [-w WORKER] [-o] [--dryrun]
+          [-w WORKER] [--once] [--dryrun]
 ```
 
 I recommend to **use at least 10,000 records per file** and to **use 16 or 32 workers**. This script uses only one CPU at the time, to maximalize the performance you can use the `parallels` package. e.g.: If you've 4 CPUs then you'd run this
@@ -51,7 +51,7 @@ If you're mixing parameters and a configuration file, parameters will override t
 - `-n` `--number`: One file will contain approx. this amount of line.
 - `-v` `--visibility`: Length of the invisible state of a message in move in seconds.
 - `-w` `--worker`: Dumping and deleting are asynchronous. Number of workers you want to use.
-- `-o` `--once`: Stops after the first iteration.
+- `--once`: Stops after the first iteration.
 - `--dryrun`: Dry-run mode. Doesn't delete the messages and the messages will be available after the read. It won't remove the temporary file's content.
 
 For testing purposes I'd recommend to use the `-o` and `--dryrun` options.
