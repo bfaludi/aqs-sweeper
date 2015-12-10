@@ -4,7 +4,7 @@ import sys, os
 version = '0.1'
 
 setup(
-    name = 'asqsweeper',
+    name = 'aqs_sweeper',
     version = version,
     description = "Extendable Azure Queue Storage dumper that copy your data into Azure Blob Storage.",
     packages = find_packages( exclude = [ 'ez_setup'] ),
@@ -12,7 +12,7 @@ setup(
     zip_safe = False,
     entry_points={
         'console_scripts': [
-            'aqs-sweep = asqsweeper:main',
+            'aqs-sweep = aqs_sweeper:main',
         ],
     },
     author = 'Bence Faludi',
