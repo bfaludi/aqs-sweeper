@@ -1,15 +1,15 @@
 # Azure Queue Storage sweeper
 
-Extendable Azure Queue Storage dumper that copy your data into Azure Blob Storage. It works in **Python 2.7** and **PyPy2** and provides a **command line interface**. This package was tested on OSX and Linux.
+Extendable Azure Queue Storage dumper that copies your data into Azure Blob Storage. It works in **Python 2.7** and **PyPy2** and provides a **command line interface**. This package was tested on OSX and Linux.
 
 This package does the following:
 
-- Dump approx. `n` messages parallel from Azure Queue Storage.
-- Decode the messages and put to a temporary JSON file.
-- Convert the file and create a new one. (need to extend)
-- Upload the final file into Azure Blob Storage.
-- Delete the messages from Azure Queue Storage.
-- Repeat it until it can dump any messages.
+- Dumps approx. `n` messages parallel from Azure Queue Storage.
+- Decodes the messages and puts to a temporary JSON file.
+- Converts the file and creates a new one (need to extend).
+- Uploads the final file into Azure Blob Storage.
+- Deletes the messages from Azure Queue Storage.
+- Repeats it until it can dump any messages.
 
 
 ## Installation
@@ -32,7 +32,7 @@ aqs-sweep [-h] [-c CONFIG] [-a ACCOUNT] [-k KEY] [-q QUEUE]
           [-w WORKER] [-o] [--dryrun]
 ```
 
-I recommend to **use at least 10,000 records per file** and to **use 16 or 32 worker**. This script use only one CPU at the time, to maximalize the performance you can use the `parallels` package. e.g.: If you've 4 CPUs then you'd run this
+I recommend to **use at least 10,000 records per file** and to **use 16 or 32 workers**. This script uses only one CPU at the time, to maximalize the performance you can use the `parallels` package. e.g.: If you've 4 CPUs then you'd run this
 
 ```bash
 seq 4 | parallel -n0 -j4 "aqs-sweep ..."
@@ -42,24 +42,23 @@ If you're mixing parameters and a configuration file, parameters will override t
 
 **Parameters**:
 
-- `-c` `--config`: Configuration file. (optional)
+- `-c` `--config`: Configuration file (optional).
 - `-a` `--account`: Azure Storage's account name.
 - `-k` `--key`: Azure Storage's account key.
 - `-q` `--queue`: Queue name of the Azure Queue Storage.
 - `-p` `--blobpath`: Azure Blob Storage's path to store the final files. Example: `wasbs://container/blob/path/`
 - `-d` `--tmpdir`: Temporary files will be created here.
-- `-n` `--number`: One file will contains approx. this amount of line.
-- `-v` `--visibility`: ?
-- `-w` `--worker`: Dumping and deleting are asynchronous. Number of worker you want to use.
+- `-n` `--number`: One file will contain approx. this amount of line.
+- `-v` `--visibility`: Length of the invisible state of a message in move in seconds.
+- `-w` `--worker`: Dumping and deleting are asynchronous. Number of workers you want to use.
 - `-o` `--once`: Stops after the first iteration.
-- `--dryrun`: Dry-run mode. Don't delete the messages and the messages will be available after the read. It won't remove the temporary file's content.
+- `--dryrun`: Dry-run mode. Doesn't delete the messages and the messages will be available after the read. It won't remove the temporary file's content.
 
-For testing purposes I'd recommend to use the `-o` and `--dryrun` option.
-
+For testing purposes I'd recommend to use the `-o` and `--dryrun` options.
 
 ### Configuration
 
-You can create a configuration file to setup the library and to avoid unecessary parameters. Save this as `config.ini`.
+You can create a configuration file to set up the library and to avoid unecessary parameters. Save this as `config.ini`.
 
 ```ini
 [sweeper]
@@ -121,4 +120,3 @@ if __name__ == '__main__':
 Copyright © 2015 Bence Faludi.
 
 Distributed under the MIT License.
-
