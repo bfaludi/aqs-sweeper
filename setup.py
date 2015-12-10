@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '0.1.1'
 
 setup(
     name = 'aqs_sweeper',
@@ -17,7 +17,7 @@ setup(
     },
     author = 'Bence Faludi',
     author_email = 'bence@ozmo.hu',
-    license = 'GPL',
+    license = 'MIT',
     install_requires = [
         'azure-storage',
         'progressbar2',
