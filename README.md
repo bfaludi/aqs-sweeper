@@ -36,7 +36,7 @@ aqs-sweep [-h] [-c CONFIG] [-a ACCOUNT] [-k KEY] [-q QUEUE]
           [-w WORKER] [--once] [--dryrun]
 ```
 
-I recommend to **use at least 10,000 records per file** and to **use 16 or 32 workers**. This script uses only one CPU at the time, to maximalize the performance you can use the `parallels` package. e.g.: If you've 4 CPUs then you'd run this
+I recommend to **use at least 10,000 records per file** and to **use 16 or 32 workers**. This script uses only one CPU at the time, to maximalize the performance you can use the `parallel` package. e.g.: If you've 4 CPUs then you'd run this
 
 ```bash
 seq 4 | parallel -n0 -j4 "aqs-sweep ..."
@@ -108,7 +108,7 @@ class MyDumper(Dumper):
     def create_output_file(self, json_filename):
         csv_filename = self.create_temporary_file('.csv')
         with io.open(csv_filename, 'w', encoding='utf-8') as out, \
-             io.open(json_filename, 'r', encofing='utf-8') as inp:
+             io.open(json_filename, 'r', encoding='utf-8') as inp:
             for line in inp:
                 data = json.loads(line)
                 # ...
