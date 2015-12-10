@@ -1,5 +1,9 @@
 # Azure Queue Storage sweeper
 
+![Downloads](https://img.shields.io/pypi/dm/aqs_sweeper.svg)
+![Version](https://img.shields.io/pypi/v/aqs_sweeper.svg)
+![License](https://img.shields.io/pypi/l/aqs_sweeper.svg)
+
 Extendable Azure Queue Storage dumper that copies your data into Azure Blob Storage. It works in **Python 2.7** and **PyPy2** and provides a **command line interface**. This package was tested on OSX and Linux.
 
 This package does the following:
